@@ -12,9 +12,9 @@
                  69, 64, 66, 55, 52, 61,
                  46, 31, 57, 52, 44, 18,
                  41, 53, 55, 61, 51, 44];
+function printAndGetHighScore (scores){
     var highScore = 0;
     var output;
-    var bestSolutions = [];
     for (var i = 0; i < scores.length; i++){
       output = "Babble solution #" + i + " score: " + scores[i];
       console.log(output);
@@ -23,13 +23,22 @@
 
       }
     }
-    for (var i = 0; i < scores.length; i++){
-      if (scores[i] == highScore){
-        bestSolutions.push(i);
-      }
+    return highScore;
+  }
+function getBestResalts (scores, highScore){
+    var bestSolutions = [];
+  for (var i = 0; i < scores.length; i++){
+    if (scores[i] == highScore){
+      bestSolutions.push(i);
     }
+  }
+  return bestSolutions;
+}
+  var highScore = printAndGetHighScore(scores);
+
     console.log("Babble tests: " + scores.length);
     console.log("highest bubble score: " + highScore);
+    var bestSolutions = getBestResalts(scores, highScore);
     console.log("Solutions with the highest score: " + bestSolutions);
   </script>
 </head>
