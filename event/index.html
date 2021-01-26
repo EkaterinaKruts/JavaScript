@@ -13,7 +13,12 @@
 
   window.onload = init;
   function init() {
-    var image0 = document.getElementById("zero");
+    var images = document.getElementsByTagName("img");
+    for (var i = 0; i < images.length; i++) {
+      images[i].onclick = showAnswer;
+    }
+  }
+  /*  var image0 = document.getElementById("zero");
     image0.onclick = showImageZero;
 
     var image1 = document.getElementById("one");
@@ -29,9 +34,9 @@
     image4.onclick = showImageFour;
 
     var image5 = document.getElementById("five");
-    image5.onclick = showImageFive;
+    image5.onclick = showImageFive;*/
 
-  function showImageZero(){
+  /*function showImageZero(){
       var image = document.getElementById("zero");
       image.src = "zero.jpg";
     }
@@ -61,7 +66,14 @@
 
   }
 
-  }
+}*/
+function showAnswer(eventObj) {
+  var image = eventObj.target;
+
+  var name = image.id;
+  name = name + ".jpg";
+  image.src = name;
+}
   </script>
 </head>
 <body>
