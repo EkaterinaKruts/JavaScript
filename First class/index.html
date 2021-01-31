@@ -8,10 +8,10 @@
 </head>
 <body>
   <script type="text/javascript">
-  var passengers = [{ name: "Jane Doloop", paid: true},
-                    { name: "Dr. Evel", paid: true},
-                    { name: "Sue Property", paid: false},
-                    { name: "John Funcall", paid: true} ];
+  var passengers = [{ name: "Jane Doloop", paid: true, ticket: "coach"},
+                    { name: "Dr. Evel", paid: true, ticket: "firstclass"},
+                    { name: "Sue Property", paid: false, ticket: "firstclass"},
+                    { name: "John Funcall", paid: true, ticket: "coach"} ];
   function processPassengers(passengers, testFunction) {
     for (var i = 0; i < passengers.length; i++) {
       if (testFunction (passengers[i])) {
@@ -37,6 +37,59 @@
     if (!allPaid) {
       console.log ("The plane can't take off: not everyone has paid.");
     }
+
+    function printPassenger (passenger) {
+      var message = passenger.name;
+      if (passenger.paid === true) {
+        message = message + " has paid";
+
+      } else {
+        message = message + " has not paid";
+
+      }
+      console.log (message);
+      return false;
+}
+
+processPassengers (passengers, printPassenger);
+
+function createDrinkOrder (passenger) {
+  var orderFunction;
+  //get drink order
+  if(passenger.ticket === "firstclass") {
+    orderFunction = function() {
+    alert ("Would you like a coctail or wine?");
+  };
+  } else {
+    orderFunction = function() {
+    alert ("Your choice is cola or water.");
+   };
+  }
+  return orderFunction;
+
+}
+
+function serveCustomer (passenger) {
+  var getDrinkOrderFunction = createDrinkOrder (passenger);
+  getDrinkOrderFunction();
+  //get dinner order
+  getDrinkOrderFunction();
+  getDrinkOrderFunction();
+  //show movie
+  getDrinkOrderFunction();
+  // pick up trash
+}
+
+function servePassengers (passengers) {
+  for (var i = 0; i < passengers.length; i++) {
+    serveCustomer (passengers[i]);
+  }
+}
+
+servePassengers (passengers);
+
+
+
   </script>
 
 </body>
